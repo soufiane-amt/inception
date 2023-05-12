@@ -7,7 +7,6 @@ RUN apt install curl -y
 
 RUN apt install  php-fpm php-mysql vim -y 
 
+COPY set_data_base.sh /
 
-
-
-# CMD ["cat"]
+CMD ["/script.sh"]
