@@ -4,7 +4,13 @@ cd wordpress
 
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-chmod +x wp-cli.phar
 
+mv wp-cli.phar /usr/local/bin/wp
 
-sudo mv wp-cli.phar /usr/local/bin/wp
+chmod +x /usr/local/bin/wp
+
+wp cli update
+
+wp core download --allow-root
+
+wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL  --allow-root
