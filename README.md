@@ -17,6 +17,7 @@ https://www.cloudflare.com/fr-fr/learning/ssl/what-is-ssl/
 
 https://preyproject.com/blog/types-of-encryption-symmetric-or-asymmetric-rsa-or-aes#:~:text=Symmetric%20encryption%20involves%20using%20a,specific%20needs%20of%20the%20user
 
+https://www.ssldragon.com/blog/what-is-openssl/
 Certainly! Establishing trust between a client and a server in TLS (Transport Layer Security) involves several steps. Here's a detailed description of the process:
 
 Client Hello:
