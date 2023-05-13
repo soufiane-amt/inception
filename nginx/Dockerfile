@@ -4,6 +4,8 @@ RUN apt update -y
 
 RUN apt install nginx -y
 
+RUN apt install openssl -y
+
 RUN mkdir -p /home/www/openssl
 
 RUN mkdir -p /home/www/ngconf
