@@ -6,11 +6,12 @@ ssl    on;
 ssl_certificate    /openssl/server.crt;
 ssl_certificate_key    /openssl/server.key;
 
-server_name samjat.42.ma;
+server_name samajat.42.ma;
+root   /var/www/html/;
 
 location / {
-root   /home/www/public_html/your.domain.com/public/;
-index  index.html;
+    index index.html;
+
 }
 
 }
