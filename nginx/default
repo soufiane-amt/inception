@@ -1,0 +1,16 @@
+server {
+
+listen   443;
+
+ssl    on;
+ssl_certificate    /openssl/server.crt;
+ssl_certificate_key    /openssl/server.key;
+
+server_name samjat.42.ma;
+
+location / {
+root   /home/www/public_html/your.domain.com/public/;
+index  index.html;
+}
+
+}
