@@ -2,6 +2,8 @@ FROM debian:buster
 
 RUN apt update -y
 
+RUN apt install vim -y
+
 RUN apt install nginx -y
 
 RUN apt install openssl -y
@@ -12,8 +14,11 @@ RUN mkdir -p /home/www/ngconf
 
 COPY openssl.conf /home/www/openssl/
 
-COPY default /home/www/ngconf
+COPY default /etc/nginx/sites-available
 
-COPY set_data_base.sh /
+COPY script.sh /
+
+RUN chmod +x script.sh
+
 
 CMD ["/script.sh"]
