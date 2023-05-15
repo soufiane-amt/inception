@@ -10,7 +10,6 @@ RUN apt install openssl -y
 
 RUN mkdir -p /home/www/openssl
 
-RUN mkdir -p /home/www/ngconf
 
 COPY openssl.conf /home/www/openssl/
 
@@ -21,4 +20,4 @@ COPY script.sh /
 RUN chmod +x script.sh
 
 
-CMD ["/script.sh"]
+# CMD ["/script.sh"]

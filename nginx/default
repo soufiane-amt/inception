@@ -3,8 +3,8 @@ server {
 listen   443;
 
 ssl    on;
-ssl_certificate    /openssl/server.crt;
-ssl_certificate_key    /openssl/server.key;
+ssl_certificate    /home/www/openssl/server.crt;
+ssl_certificate_key  /home/www/openssl/server.key;
 
 server_name samajat.42.ma;
 root   /var/www/html/;
@@ -14,3 +14,17 @@ location / {
 }
 
 }
+
+
+##server {
+##
+##listen   8080;
+##
+##server_name samajat.42.ma;
+##root   /var/www/html/;
+##
+##location / {
+##    index index.html;
+##}
+##
+##}

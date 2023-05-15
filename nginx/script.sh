@@ -1,11 +1,9 @@
 #!/bin/bash
 
-cd /home/www/openssl
 
-openssl genrsa -des3 -passout pass:"0000" -out server.key 2048
+openssl genrsa  -out /home/www/openssl/server.key
 
-openssl req -x509 -new -nodes -key server.key -sha256 -days 1825 -out server.crt -config openssl.conf -batch -passin pass:"0000"
 
-service nginx restart
+openssl req -x509 -new -key /home/www/openssl/server.key -sha256 -days 356 -out /home/www/openssl/server.crt -config /home/www/openssl/openssl.conf 
 
-nginx -g "daemon off"
+service nginx start
