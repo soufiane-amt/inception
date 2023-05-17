@@ -5,3 +5,10 @@ services:
     build: wordpress/.
     image: wordpress:inception
     container_name: my-wordpress
+    environment:
+      - DOMAIN_NAME=samajat.42.ft
+      - WP_TITLE="The Proud Lord castle"
+      - WP_ADMIN_USR=admin
+      - WP_ADMIN_PWD=admin
+      - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
+
