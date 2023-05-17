@@ -1,14 +1,16 @@
-version: '2.4'
+version: '3'
 
 services:
-  wordpress:
-    build: wordpress/.
-    image: wordpress:inception
-    container_name: my-wordpress
+  mariadb:
+    build: mariadb/.
+    image: mariadb:inception
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/home
     environment:
-      - DOMAIN_NAME=samajat.42.ft
-      - WP_TITLE="The Proud Lord castle"
-      - WP_ADMIN_USR=admin
-      - WP_ADMIN_PWD=admin
-      - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
+      - DB_NAME=MyDataBase
+      - DB_USER=DataBaseUser
+      - DB_PASS=1234
+
 
