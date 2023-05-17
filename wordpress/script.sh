@@ -17,6 +17,13 @@ wp core download --allow-root
 
 mv wp-config-sample.php wp-config.php
 
+
+sed -i "s/database_name_here/$DB_NAME/g" wp-config.php
+
+sed -i "s/username_here/$DB_USER/g" wp-config.php
+
+sed -i "s/password_here/$DB_PASS/g" wp-config.php
+
 cat wp-config.php
 
 wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL  --allow-root
