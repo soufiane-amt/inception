@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  mariadb:
+    build: .
+    image: mariadb:inception
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/home
+
