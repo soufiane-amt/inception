@@ -1,6 +1,30 @@
-version: '3'
+version: '2.4'
 
 services:
+  nginx:
+    build: nginx/.
+    image: nginx-42:inception
+    container_name: my-nginx
+    environment: # Corrected spelling
+      - DOMAIN_NAME=samajat.42.ft
+      - WP_TITLE="The Proud Lord castle"
+      - WP_ADMIN_USR=admin
+      - WP_ADMIN_PWD=admin
+      - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
+
+  wordpress:
+    build: wordpress/.
+    image: wordpress:inception
+    container_name: my-wordpress
+    environment:
+      - DOMAIN_NAME=samajat.42.ft
+      - WP_TITLE="The Proud Lord castle"
+      - WP_ADMIN_USR=admin
+      - WP_ADMIN_PWD=admin
+      - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
+    depends_on:
+      - mariadb
+
   mariadb:
     build: mariadb/.
     image: mariadb:inception
@@ -12,5 +36,3 @@ services:
       - DB_NAME=MyDataBase
       - DB_USER=DataBaseUser
       - DB_PASS=1234
-
-
