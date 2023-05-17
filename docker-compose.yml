@@ -1,9 +1,23 @@
 version: '2.4'
 
 services:
+  mariadb:
+    build: mariadb/.
+    image: mariadb:inception
+    container_name: my-mariadb
+    environment:
+      - DB_NAME=MyDataBase
+      - DB_USER=DataBaseUser
+      - DB_PASS=1234
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - my-network
+
+
   nginx:
     build: nginx/.
-    image: nginx-42:inception
+    image: nginx:inception
     container_name: my-nginx
     environment: # Corrected spelling
       - DOMAIN_NAME=samajat.42.ft
@@ -11,6 +25,12 @@ services:
       - WP_ADMIN_USR=admin
       - WP_ADMIN_PWD=admin
       - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
+    depends_on:
+      - wordpress
+    ports:
+      - '443:443'
+    networks:
+      - my-network
 
   wordpress:
     build: wordpress/.
@@ -22,17 +42,50 @@ services:
       - WP_ADMIN_USR=admin
       - WP_ADMIN_PWD=admin
       - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
-    depends_on:
-      - mariadb
-
-  mariadb:
-    build: mariadb/.
-    image: mariadb:inception
-    ports:
-      - 3306:3306
-    volumes:
-      - ./data:/home
-    environment:
       - DB_NAME=MyDataBase
       - DB_USER=DataBaseUser
       - DB_PASS=1234
+    ports:
+      - 8080:80
+    networks:
+      - my-network
+
+networks:
+  my-network:
+
+volumes:
+  mariadb_data:
+
+#   wordpress:
+#     build: wordpress/.
+#     image: wordpress:inception
+#     container_name: my-wordpress
+#     environment:
+#       - DOMAIN_NAME=samajat.42.ft
+#       - WP_TITLE="The Proud Lord castle"
+#       - WP_ADMIN_USR=admin
+#       - WP_ADMIN_PWD=admin
+#       - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
+#       - DB_NAME=MyDataBase
+#       - DB_USER=DataBaseUser
+#       - DB_PASS=1234
+#     depends_on:
+#       - mariadb
+#     networks:
+#       - my-network
+    
+#   mariadb:
+#     build: mariadb/.
+#     image: mariadb:inception
+#     ports:
+#       - 3306:3306
+#     volumes:
+#       - ./data:/home
+#     environment:
+#       - DB_NAME=MyDataBase
+#       - DB_USER=DataBaseUser
+#       - DB_PASS=1234
+#     networks:
+#       - my-network
+# networks:
+#   my-network:

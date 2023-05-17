@@ -18,11 +18,13 @@ wp core download --allow-root
 mv wp-config-sample.php wp-config.php
 
 
-sed -i "s/database_name_here/$DB_NAME/g" wp-config.php
+sed -i "s/database_name_here/$DB_NAME/1" wp-config.php
 
-sed -i "s/username_here/$DB_USER/g" wp-config.php
+sed -i "s/username_here/$DB_USER/1" wp-config.php
 
-sed -i "s/password_here/$DB_PASS/g" wp-config.php
+sed -i "s/password_here/$DB_PASS/1" wp-config.php
+
+sed -i "s/localhost/mariadb/1" wp-config.php
 
 cat wp-config.php
 
