@@ -30,4 +30,5 @@ cat wp-config.php
 
 wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL  --allow-root
 
-sleep 100
+sleep 800000
+/usr/sbin/php-fpm7.3 -F

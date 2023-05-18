@@ -22,7 +22,7 @@ services:
     image: nginx:inception
     container_name: my-nginx
     environment: # Corrected spelling
-      - DOMAIN_NAME=samajat.42.ft
+      - DOMAIN_NAME=samajat.42.fr
       - WP_TITLE="TheProudLordcastle"
       - WP_ADMIN_USR=admin
       - WP_ADMIN_PWD=admin
@@ -33,13 +33,15 @@ services:
       - '443:443'
     networks:
       - my-network
+    volumes:
+    - data-wordpress:/var/www/html
 
   wordpress:
     build: wordpress/.
     image: wordpress:inception
     container_name: my-wordpress
     environment:
-      - DOMAIN_NAME=samajat.42.ft
+      - DOMAIN_NAME=samajat.42.fr
       - WP_TITLE="TheProudLordcastle"
       - WP_ADMIN_USR=admin
       - WP_ADMIN_PWD=admin
@@ -48,22 +50,24 @@ services:
       - DB_USER=DataBaseUser
       - DB_PASS=1234
     ports:
-      - 8000:80
+      - 9000:9000
     networks:
       - my-network
+    volumes:
+      - data-wordpress:/wordpress
 
 networks:
   my-network:
 
 volumes:
   mariadb_data:
-
+  data-wordpress:
 #   wordpress:
 #     build: wordpress/.
 #     image: wordpress:inception
 #     container_name: my-wordpress
 #     environment:
-#       - DOMAIN_NAME=samajat.42.ft
+#       - DOMAIN_NAME=samajat.42.fr
 #       - WP_TITLE="The Proud Lord castle"
 #       - WP_ADMIN_USR=admin
 #       - WP_ADMIN_PWD=admin
