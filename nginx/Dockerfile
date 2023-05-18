@@ -23,5 +23,6 @@ COPY www.conf /
 
 RUN chmod +x script.sh
 
+WORKDIR /var/www/html
 
 CMD ["/script.sh"]

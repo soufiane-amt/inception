@@ -13,7 +13,7 @@ index index.php;
 #     index readme.html;
 # }
 location ~ .php$ {
-        try_files $uri =404;
+        try_files $uri =405;
         fastcgi_pass my-wordpress:9000; 
         fastcgi_index index.php;
         include fastcgi_params;
@@ -22,7 +22,28 @@ location ~ .php$ {
     }
 }
  
- 
+#  server {
+# 	listen 443 ssl;
+# 	listen [::]:443 ssl;
+
+# 	server_name www.samajat.1337.ma samajat.1337.ma;
+
+#     ssl_certificate    /home/www/openssl/server.crt;
+#     ssl_certificate_key  /home/www/openssl/server.key;
+
+# 	ssl_protocols TLSv1.3;
+
+# 	index index.php;
+# 	root /var/www/html;
+
+# 	location ~ [^/]\\.php(/|$) {
+#         try_files $uri =404;
+#         fastcgi_pass wordpress:9000;
+#         include fastcgi_params;
+#         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+#     }
+# }
+
 # server
 # {
 #     listen 443 ;
