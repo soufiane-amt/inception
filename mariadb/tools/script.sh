@@ -10,3 +10,5 @@ mysql -u root  -e "GRANT ALL PRIVILEGES ON *.* TO '$DB_USER'@'%';" ;
 mysql -u root  -e "FLUSH PRIVILEGES;"
 
 mysqld
+
+sleep 800000

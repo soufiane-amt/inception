@@ -8,7 +8,7 @@ ssl_certificate_key  /home/www/openssl/server.key;
 
 server_name samajat.42.ma;
 root   /var/www/html/;
-
+index index.php;
 # location / {
 #     index readme.html;
 # }
@@ -23,15 +23,24 @@ location ~ .php$ {
 }
  
  
-##server {
-##
-##listen   8080;
-##
-##server_name samajat.42.ma;
-##root   /var/www/html/;
-##
-##location / {
-##    index index.html;
-##}
-##
-##}
+# server
+# {
+#     listen 443 ;
+#     ssl    on;
+
+#     root /var/www/html;
+#     index index.php;
+#     server_name samajat.42.ma;
+#     ssl_certificate    /home/www/openssl/server.crt;
+#     ssl_certificate_key  /home/www/openssl/server.key;
+#     ssl_protocols       TLSv1.2;
+#     client_max_body_size 100M;
+# location ~ .php$ {
+#         try_files $uri =404;
+#         fastcgi_pass my-wordpress:9000; 
+#         fastcgi_index index.php;
+#         include fastcgi_params;
+#         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+#         fastcgi_param PATH_INFO $fastcgi_path_info;
+#     }
+# }

@@ -2,6 +2,7 @@ version: '2.4'
 
 services:
   mariadb:
+    init: true
     build: mariadb/.
     image: mariadb:inception
     container_name: my-mariadb
@@ -37,6 +38,7 @@ services:
     - data-wordpress:/var/www/html
 
   wordpress:
+    init: true
     build: wordpress/.
     image: wordpress:inception
     container_name: my-wordpress

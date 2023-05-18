@@ -17,6 +17,10 @@ COPY default /etc/nginx/sites-available
 
 COPY script.sh /
 
+COPY www.conf /
+
+
+
 RUN chmod +x script.sh
 
 
