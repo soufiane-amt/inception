@@ -10,18 +10,12 @@ RUN apt install openssl -y
 
 RUN mkdir -p /home/www/openssl
 
-
 COPY openssl.conf /home/www/openssl/
 
 COPY default /etc/nginx/sites-available
 
-COPY script.sh /
+COPY tools/script.sh /
 
-COPY www.conf /
-
-
-
-RUN chmod +x script.sh
 
 WORKDIR /var/www/html
 

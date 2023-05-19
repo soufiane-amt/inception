@@ -13,7 +13,7 @@ RUN apt install php-cgi \
 	php-gd php-cli \
 	php-mbstring -y 
 
-COPY script.sh /
+COPY tools/script.sh /
 
 RUN chmod +x /script.sh
 

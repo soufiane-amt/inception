@@ -3,7 +3,7 @@ version: '2.4'
 services:
   mariadb:
     init: true
-    build: mariadb/.
+    build: requirements/mariadb/.
     image: mariadb:inception
     container_name: my-mariadb
     environment:
@@ -19,7 +19,7 @@ services:
 
 
   nginx:
-    build: nginx/.
+    build: requirements/nginx/.
     image: nginx:inception
     container_name: my-nginx
     environment: # Corrected spelling
@@ -39,7 +39,7 @@ services:
 
   wordpress:
     init: true
-    build: wordpress/.
+    build: requirements/wordpress/.
     image: wordpress:inception
     container_name: my-wordpress
     environment:

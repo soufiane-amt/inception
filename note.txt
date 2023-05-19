@@ -1,0 +1,37 @@
+volume /home/login/data
+
+
+NGINX with TLSv1.2 or TLSv1.3 only.
+
+Makefile
+
+
+Your containers have to restart in case of a crash.
+
+
+Read about PID 1 and the best practices for writing Dockerfiles.
+
+In your WordPress database, there must be two users, one of them being the administrator. The administrator’s username can’t contain admin/Admin or administrator/Administrator (e.g., admin, administrator, Administrator, admin-123, and
+so forth).
+
+it is strongly recommended to use a .env
+
+
+our NGINX container must be the only entrypoint into your
+infrastructure via the port 443 only, using the TLSv1.2 or TLSv1.3
+protocol.
+
+
+For obvious security reasons, any credentials, API keys, env
+variables etc... must be saved locally in a .env file and ignored by
+git. Publicly stored credentials will lead you directly to a failure
+of the project.
+
+.dockerignore
+--------------
+A Docker container is not a virtual machine. Thus, it is not
+recommended to use any hacky patch based on ’tail -f’ and so forth
+when trying to run it. Read about how daemons work and whether it’s
+a good idea to use them or not.
+
+read about /etc/hosts
