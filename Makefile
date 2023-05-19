@@ -24,19 +24,18 @@ volumes:
 login-db:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) exec mariadb bash
 
-login-nginx:
+login-ng:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) exec nginx bash
 
-login-wordpress:
+login-wp:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) exec wordpress bash
 
-remove-containers:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down -v
+rm-containers: clean
 	docker-compose -f $(DOCKER_COMPOSE_FILE) rm -f
 
-remove-images:
+rm-images: clean
 	docker-compose -f $(DOCKER_COMPOSE_FILE) down -v
 	docker-compose -f $(DOCKER_COMPOSE_FILE) rm -f
 	docker images -q | xargs docker rmi -f
 
-remove-all: remove-containers remove-images
+rm-all: rm-containers rm-images

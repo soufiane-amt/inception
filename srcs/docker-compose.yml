@@ -1,8 +1,7 @@
-version: '3'  # Choose the appropriate version here
+version: '3'
 
 services:
   mariadb:
-    init: true
     build: requirements/mariadb/.
     image: mariadb:inception
     container_name: my-mariadb
@@ -35,7 +34,6 @@ services:
 
 
   wordpress:
-    init: true
     build: requirements/wordpress/.
     image: wordpress:inception
     container_name: my-wordpress
