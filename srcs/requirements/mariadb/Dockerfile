@@ -6,4 +6,6 @@ COPY tools /var/www/
 
 RUN chmod +x /var/www/script.sh
 
+EXPOSE 3306
+
 ENTRYPOINT [ "/var/www/script.sh"] 

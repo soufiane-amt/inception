@@ -1,4 +1,4 @@
-version: '2.4'
+version: '3'  # Choose the appropriate version here
 
 services:
   mariadb:
@@ -6,28 +6,21 @@ services:
     build: requirements/mariadb/.
     image: mariadb:inception
     container_name: my-mariadb
-    environment:
-      - DB_NAME=MyDataBase
-      - DB_USER=DataBaseUser
-      - DB_PASS=1234
     volumes:
       - mariadb_data:/var/lib/mysql
     ports:
       - '3306:3306'
     networks:
       - my-network
+    restart: always
+    env_file:
+      - .env
 
 
   nginx:
     build: requirements/nginx/.
     image: nginx:inception
     container_name: my-nginx
-    environment: # Corrected spelling
-      - DOMAIN_NAME=samajat.42.fr
-      - WP_TITLE="TheProudLordcastle"
-      - WP_ADMIN_USR=admin
-      - WP_ADMIN_PWD=admin
-      - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
     depends_on:
       - wordpress
     ports:
@@ -35,68 +28,31 @@ services:
     networks:
       - my-network
     volumes:
-    - data-wordpress:/var/www/html
+      - wordpress_data:/var/www/html
+    restart: always
+    env_file:
+      - .env
+
 
   wordpress:
     init: true
     build: requirements/wordpress/.
     image: wordpress:inception
     container_name: my-wordpress
-    environment:
-      - DOMAIN_NAME=samajat.42.fr
-      - WP_TITLE="TheProudLordcastle"
-      - WP_ADMIN_USR=admin
-      - WP_ADMIN_PWD=admin
-      - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
-      - DB_NAME=MyDataBase
-      - DB_USER=DataBaseUser
-      - DB_PASS=1234
-      - WP_USR=samajat
-      - WP_USR_EMAIL=soufianeamt919@gmail.com
-      - WP_USR_PWD=123
     ports:
       - 9000:9000
     networks:
       - my-network
     volumes:
-      - data-wordpress:/var/www/html
+      - wordpress_data:/var/www/html
+    restart: always
+    env_file:
+      - .env
+
 
 networks:
   my-network:
 
 volumes:
   mariadb_data:
-  data-wordpress:
-#   wordpress:
-#     build: wordpress/.
-#     image: wordpress:inception
-#     container_name: my-wordpress
-#     environment:
-#       - DOMAIN_NAME=samajat.42.fr
-#       - WP_TITLE="The Proud Lord castle"
-#       - WP_ADMIN_USR=admin
-#       - WP_ADMIN_PWD=admin
-#       - WP_ADMIN_EMAIL=soufianeamt11@gmail.com
-#       - DB_NAME=MyDataBase
-#       - DB_USER=DataBaseUser
-#       - DB_PASS=1234
-#     depends_on:
-#       - mariadb
-#     networks:
-#       - my-network
-    
-#   mariadb:
-#     build: mariadb/.
-#     image: mariadb:inception
-#     ports:
-#       - 3306:3306
-#     volumes:
-#       - ./data:/home
-#     environment:
-#       - DB_NAME=MyDataBase
-#       - DB_USER=DataBaseUser
-#       - DB_PASS=1234
-#     networks:
-#       - my-network
-# networks:
-#   my-network:
+  wordpress_data:

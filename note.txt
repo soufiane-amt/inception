@@ -11,7 +11,8 @@ Your containers have to restart in case of a crash.
 
 Read about PID 1 and the best practices for writing Dockerfiles.
 
-In your WordPress database, there must be two users, one of them being the administrator. The administrator’s username can’t contain admin/Admin or administrator/Administrator (e.g., admin, administrator, Administrator, admin-123, and
+In your WordPress database, there must be two users, one of them being the administrator. 
+The administrator’s username can’t contain admin/Admin or administrator/Administrator (e.g., admin, administrator, Administrator, admin-123, and
 so forth).
 
 it is strongly recommended to use a .env
@@ -35,3 +36,11 @@ when trying to run it. Read about how daemons work and whether it’s
 a good idea to use them or not.
 
 read about /etc/hosts
+
+
+
+
+----------+++++-----------
+-docker build context 
+-Image Layers
+-What is the meanning of mapping ports
