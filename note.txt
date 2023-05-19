@@ -44,3 +44,26 @@ read about /etc/hosts
 -docker build context 
 -Image Layers
 -What is the meanning of mapping ports
+
+
+----Questions -----
+-what is mariadb and how it s different from mysql?
+
+--what is a Dockerfile?
+
+--why do we need to update before we start installing ?'
+
+--READ more about nginx config file>
+
+--analyse every bit of nginx config file.
+
+--openssl && ssl certificate 
+
+-- CMD vs entrypoint
+
+
+--wp cli && php7.3-fpm && php7.3-fpm.sock
+
+--read about all packages you installed
+
+--docker-compose 

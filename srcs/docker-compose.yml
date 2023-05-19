@@ -11,7 +11,7 @@ services:
       - '3306:3306'
     networks:
       - my-network
-    restart: always
+    restart: on-failure
     env_file:
       - .env
 
@@ -28,7 +28,7 @@ services:
       - my-network
     volumes:
       - wordpress_data:/var/www/html
-    restart: always
+    restart: on-failure
     env_file:
       - .env
 
@@ -37,17 +37,18 @@ services:
     build: requirements/wordpress/.
     image: wordpress:inception
     container_name: my-wordpress
+    depends_on:
+      - mariadb
     ports:
       - 9000:9000
     networks:
       - my-network
     volumes:
       - wordpress_data:/var/www/html
-    restart: always
+    restart: on-failure
     env_file:
       - .env
-
-
+  
 networks:
   my-network:
 
