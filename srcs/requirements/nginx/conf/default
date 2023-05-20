@@ -9,9 +9,7 @@ ssl_certificate_key  /home/www/openssl/server.key;
 server_name samajat.42.ma;
 root   /var/www/html/;
 index index.php;
-# location / {
-#     index readme.html;
-# }
+
 location ~ .php$ {
         try_files $uri =405;
         fastcgi_pass my-wordpress:9000; 

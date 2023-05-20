@@ -1,13 +1,19 @@
 DOCKER_COMPOSE_FILE=srcs/docker-compose.yml
 
 
-all: build start
+all: CREATE_VOL_DIR build start
 
 build:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) build
 
 start:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
+
+CREATE_VOL_DIR:
+	mkdir -p /home/samajat/data/mariadb_data && mkdir -p /home/samajat/data/wordpress_data
+
+RM_VOL_DIR:
+	rm -rf /home/samajat
 
 stop:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) down
@@ -38,4 +44,6 @@ rm-images: clean
 	docker-compose -f $(DOCKER_COMPOSE_FILE) rm -f
 	docker images -q | xargs docker rmi -f
 
-rm-all: rm-containers rm-images
+rm-all: rm-containers rm-images RM_VOL_DIR
+
+re: rm-all all

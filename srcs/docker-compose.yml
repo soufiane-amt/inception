@@ -6,7 +6,7 @@ services:
     image: mariadb:inception
     container_name: my-mariadb
     volumes:
-      - mariadb_data:/var/lib/mysql
+      -  mariadb_data:/var/lib/mysql
     ports:
       - '3306:3306'
     networks:
@@ -27,7 +27,7 @@ services:
     networks:
       - my-network
     volumes:
-      - wordpress_data:/var/www/html
+      -  wordpress_data:/var/www/html
     restart: on-failure
     env_file:
       - .env
@@ -37,21 +37,29 @@ services:
     build: requirements/wordpress/.
     image: wordpress:inception
     container_name: my-wordpress
-    depends_on:
-      - mariadb
     ports:
       - 9000:9000
     networks:
       - my-network
     volumes:
-      - wordpress_data:/var/www/html
+      -  wordpress_data:/var/www/html
     restart: on-failure
     env_file:
       - .env
-  
+    depends_on:
+      - mariadb
+
 networks:
   my-network:
 
 volumes:
   mariadb_data:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/samajat/data/mariadb_data
   wordpress_data:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/samajat/data/wordpress_data

@@ -67,3 +67,16 @@ read about /etc/hosts
 --read about all packages you installed
 
 --docker-compose 
+
+--mapping ports
+
+--run container without root.
+
+--how the docker manages to completly isolate a container
+
+--what is php-fpm 
+
+-- what network:host in compose-file && --link
+
+--the difference between a docker image with docker-compose and without it .
+
