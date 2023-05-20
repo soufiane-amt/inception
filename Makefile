@@ -19,7 +19,7 @@ stop:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
 clean:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down -v
+	docker-compose -f $(DOCKER_COMPOSE_FILE) down --volumes && RM_VOL_DIR
 
 ps:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) ps
@@ -40,10 +40,9 @@ rm-containers: clean
 	docker-compose -f $(DOCKER_COMPOSE_FILE) rm -f
 
 rm-images: clean
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down -v
 	docker-compose -f $(DOCKER_COMPOSE_FILE) rm -f
 	docker images -q | xargs docker rmi -f
 
-rm-all: rm-containers rm-images RM_VOL_DIR
+rm-all: rm-containers rm-images
 
 re: rm-all all
