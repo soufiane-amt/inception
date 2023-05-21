@@ -1,9 +1,9 @@
 DOCKER_COMPOSE_FILE=srcs/docker-compose.yml
 
 
-all: CREATE_VOL_DIR build start
+all:  build start
 
-build:
+build: CREATE_VOL_DIR
 	docker-compose -f $(DOCKER_COMPOSE_FILE) build
 
 start:
@@ -19,7 +19,7 @@ stop:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
 clean:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down --volumes && RM_VOL_DIR
+	docker-compose -f $(DOCKER_COMPOSE_FILE) down --volumes && make RM_VOL_DIR
 
 ps:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) ps

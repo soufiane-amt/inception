@@ -30,11 +30,6 @@ of the project.
 
 .dockerignore
 --------------
-A Docker container is not a virtual machine. Thus, it is not
-recommended to use any hacky patch based on ’tail -f’ and so forth
-when trying to run it. Read about how daemons work and whether it’s
-a good idea to use them or not.
-
 read about /etc/hosts
 
 
@@ -44,9 +39,11 @@ read about /etc/hosts
 -docker build context 
 -Image Layers
 -What is the meanning of mapping ports
-
+-wp-config
 
 ----Questions -----
+what is wordpress?
+
 -what is mariadb and how it s different from mysql?
 
 --what is a Dockerfile?
@@ -79,4 +76,18 @@ read about /etc/hosts
 -- what network:host in compose-file && --link
 
 --the difference between a docker image with docker-compose and without it .
+
+
+
+
+
+
+
+----
+
+A Docker container is not a virtual machine. Thus, it is not
+recommended to use any hacky patch based on ’tail -f’ and so forth
+when trying to run it. Read about how daemons work and whether it’s
+a good idea to use them or not.
+
 

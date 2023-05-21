@@ -23,4 +23,4 @@ WORKDIR /var/www/html
 EXPOSE 443
 
 
-CMD ["/script.sh"]
+ENTRYPOINT ["/script.sh"]

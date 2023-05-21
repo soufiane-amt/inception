@@ -1,12 +1,8 @@
 FROM debian:buster
 
-RUN apt-get update -y 
+RUN apt-get update -y  && apt install curl -y && apt install  php-fpm php-mysql  -y 
 
-RUN apt install curl -y
-
-RUN apt install  php-fpm php-mysql  -y 
-
-COPY tools/script.sh /
+COPY tools/script.sh /script.sh
 
 RUN chmod +x /script.sh
 
