@@ -50,7 +50,7 @@ what is wordpress?
 
 --why do we need to update before we start installing ?'
 
---READ more about nginx config file>
+
 
 --analyse every bit of nginx config file.
 
@@ -61,21 +61,17 @@ what is wordpress?
 
 --wp cli && php7.3-fpm && php7.3-fpm.sock
 
---read about all packages you installed
 
 --docker-compose 
 
 --mapping ports
 
---run container without root.
 
 --how the docker manages to completly isolate a container
 
 --what is php-fpm 
 
 -- what network:host in compose-file && --link
-
---the difference between a docker image with docker-compose and without it .
 
 
 
@@ -91,3 +87,9 @@ when trying to run it. Read about how daemons work and whether it’s
 a good idea to use them or not.
 
 
+--READ more about nginx config file>
+
+--read about all packages you installed
+
+
+--run container without root.

@@ -28,12 +28,8 @@ wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR
 
 wp user create $WP_USR $WP_USR_EMAIL --role=author --user_pass=$WP_USR_PWD --allow-root
 
-sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/g' /etc/php/7.3/fpm/pool.d/www.conf
+sed -i 's/listen = \/run\/php\/php7.3-fpm.sock/listen = 9000/1' /etc/php/7.3/fpm/pool.d/www.conf
 
-cd /run
-
-mkdir php
-
-touch php7.3-fpm.sock
+mkdir -p /run/php/php7.3-fpm.sock
 
 php-fpm7.3 -F

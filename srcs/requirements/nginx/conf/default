@@ -6,14 +6,14 @@ ssl    on;
 ssl_certificate    /home/www/openssl/server.crt;
 ssl_certificate_key  /home/www/openssl/server.key;
 
-server_name samajat.42.ma;
+server_name samajat.42.fr;
 root   /var/www/html/;
-index index.php;    
+index wp-login.php;    
 ssl_protocols       TLSv1.2;
 
 
 location ~ .php$ {
-        try_files $uri =405;
+        try_files $uri =404;
         fastcgi_pass my-wordpress:9000; 
         fastcgi_index wp-login.php;
         include fastcgi_params;
