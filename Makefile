@@ -24,8 +24,6 @@ clean:
 ps:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) ps
 
-volumes:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) config --volumes
 
 login-db:
 	docker-compose -f $(DOCKER_COMPOSE_FILE) exec mariadb bash

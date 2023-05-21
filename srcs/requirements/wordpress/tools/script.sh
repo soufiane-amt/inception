@@ -1,7 +1,5 @@
 #!/bin/bash
 
-chmod +x /var/www/html/index.php
-
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 
